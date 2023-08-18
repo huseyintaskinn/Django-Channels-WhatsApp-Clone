@@ -14,6 +14,7 @@ class Message(models.Model):
     room = models.ForeignKey(Room, related_name="messages_room", verbose_name="Oda", on_delete=models.CASCADE)
     content = models.TextField(verbose_name="Mesaj_Icerigi")
     created_date = models.DateTimeField(auto_now_add=True)
+    what_is_it = models.CharField(max_length=50, null=True)
 
     def get_short_date(self):
         saat = str(self.created_date.hour)

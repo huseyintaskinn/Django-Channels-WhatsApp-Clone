@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="col-sm-1 col-xs-1  heading-dot  pull-right">
-            <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+            <i class="fa fa-sign-out fa-2x  pull-right" aria-hidden="true"></i>
           </div>
           <div class="col-sm-2 col-xs-2 heading-compose  pull-right">
             <i class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
@@ -93,7 +93,19 @@
               <div class="col-sm-12 message-main-sender">
                 <div class="sender">
                   <div class="message-text">
-                    {{ message.content }}
+                    {% if message.what_is_it == "text" %} 
+                      {{ message.content}} 
+                    {% elif message.what_is_it == "image" %} 
+                      <img src="{{ message.content }}" width="250" height="250" alt=""> 
+                    {% elif message.what_is_it == "audio" %} 
+                      <audio style="width: 200px;" controls>
+                        <source src="{{ message.content }}">
+                      </audio>
+                    {% elif message.what_is_it == "video" %} 
+                      <video width="250" height="250" controls>
+                        <source src="{{ message.content }}">
+                      </video>
+                    {% endif %}
                   </div>
                   <span class="message-time pull-right">
                     {{ message.get_short_date }}
@@ -108,7 +120,19 @@
               <div class="col-sm-12 message-main-receiver">
                 <div class="receiver">
                   <div class="message-text">
-                    {{ message.content }}
+                    {% if message.what_is_it == "text" %} 
+                      {{ message.content}} 
+                    {% elif message.what_is_it == "image" %} 
+                      <img src="{{ message.content }}" width="250" height="250" alt=""> 
+                    {% elif message.what_is_it == "audio" %} 
+                      <audio style="width: 200px;" controls>
+                        <source src="{{ message.content }}">
+                      </audio>
+                    {% elif message.what_is_it == "video" %} 
+                      <video width="250" height="250" controls>
+                        <source src="{{ message.content }}">
+                      </video>
+                    {% endif %}
                   </div>
                   <span class="message-time pull-right">
                     {{ message.get_short_date }}
@@ -148,13 +172,14 @@
 
       <div class="row reply">
         <div class="col-sm-1 col-xs-1 reply-emojis">
-          <i class="fa fa-smile-o fa-2x"></i>
+          <i class="fa fa-microphone fa-2x" id="record"></i>
         </div>
         <div class="col-sm-9 col-xs-9 reply-main">
           <input class="form-control" rows="1" id="comment"></input>
         </div>
         <div class="col-sm-1 col-xs-1 reply-recording">
-          <i class="fa fa-file fa-2x" aria-hidden="true"></i>
+          <input type="file" id="hiddeninput" class="hidden">
+          <i class="fa fa-file fa-2x" aria-hidden="true" id="file" onclick="document.getElementById('hiddeninput').click()"></i>
         </div>
         <div class="col-sm-1 col-xs-1 reply-send">
           <i class="fa fa-send fa-2x" aria-hidden="true" id="send"></i>
