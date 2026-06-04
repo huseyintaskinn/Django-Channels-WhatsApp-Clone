@@ -367,14 +367,14 @@ python manage.py migrate
 ## 📚 Yapı Özeti
 
 ```mermaid
-graph TB
+graph TD
     A["Browser (JavaScript)"] -->|HTTP| B["Django View"]
     A -->|WebSocket| C["Daphne/ASGI"]
     B --> D["SQLite DB"]
     C --> E["ChatConsumer"]
     E --> D
     E -->|Group Send| F["Other Browsers"]
-    F -->|WebSocket| C
+    C -.->|WebSocket| F
 ```
 
 ---
