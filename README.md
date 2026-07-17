@@ -35,7 +35,7 @@ Bu proje, Django ve Django Channels kullanarak gerçek zamanlı mesajlaşma öze
 ### 1. Depoyu Klonlayın
 
 ```bash
-git clone https://github.com/kullaniciadi/Django-Channels-WhatsApp-Clone.git
+git clone https://github.com/huseyintaskinn/Django-Channels-WhatsApp-Clone.git
 cd Django-Channels-WhatsApp-Clone-main
 ```
 
